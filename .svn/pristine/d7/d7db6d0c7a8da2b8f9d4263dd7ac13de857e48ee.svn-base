@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<{include file='common/meta.html'}>
+	<{include file='common/pagebasecss.html'}>
+
+	<link rel="stylesheet" href="<{$base_url}>css/account_manage/login.css" />
+	<script type="text/javascript">var __base_url = '<{$base_url}>';</script>
+
+	<title>登录</title>
+
+</head>
+	<body>
+		<div id="login_tip_layer" class='tip-layer non'>
+			<p>正在进行身份验证与数据初始化，请稍后...</p>
+		</div>
+		<div class='main-wrapper'>
+			<div class="login-header">
+				
+			</div>
+			<div class="login-main">
+				<form action="login" method="post" name="form">
+					<table class="login-table">
+						<tr>
+							<th>用户名</th>
+							<td >
+								<input id="account_name" class="info-input-login login-account" type='text' name="" value='' placeholder="邮箱">
+							</td>
+							<td></td>
+						</tr>
+						<tr>
+							<th>密码</th>
+							<td colspan="2">
+								<input id="account_pwd" class="info-input-login login-pwd" type='password' name="" value=''>
+							</td>
+							<td></td>
+
+						</tr>
+						<tr>
+							<th>验证码</th>
+							<td>
+								<input id="verify_code" class="info-input-login login-code" type='text' name="" value=''>
+							</td>
+							<td>
+								<img id="img_yzm" class="login-img-yzm" src="<{$base_url}>captcha/captcha.php">
+								
+							</td>
+						</tr>
+						<tr>
+							
+							<td colspan='3' class="tac">
+								<a id='action_login' class="btn-login btn-blue" >登   录</a>
+								<p id="valid_tip" class="error"></p>
+							</td>
+						</tr>
+						
+					</table>
+					
+				</form>
+			</div>
+		</div>
+		
+		<{include file='common/footer.html'}>
+	</body>
+	<script src="<{$base_url}>js/common/libs/require.js" data-main="<{$base_url}>js/account_manage/login"></script>
+</html>

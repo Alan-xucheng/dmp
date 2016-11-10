@@ -1,0 +1,141 @@
+
+.top-operation .radio{
+	margin-top: 15px;
+	color: #fff;
+	line-height: 19px;
+}
+.icon-item{
+	height: 30px;
+	background-repeat: no-repeat;
+	background-position: left 8px;
+	background-image: url(img/tag_icon.png);
+	line-height: 30px;
+}
+
+.icon-tag1{
+	padding-left: 35px;
+	background-image: url(img/icon_tag1.png) ;
+	background-position: left center;
+}
+.icon-tag2{
+	padding-left: 20px;
+	height: auto;
+	background-image: url(img/icon_tag2.png) ;
+	background-position: left 3px;
+	line-height: 26px;
+}
+.icon-time{
+	padding-left: 23px;
+	background-position: 0px -169px;
+}
+.icon-star{
+	padding-left: 25px;
+	background-position:left -77px;
+}
+.icon-calendar{
+	padding-left: 25px;
+	background-position:left 7px;
+}
+.tag-list-item:hover .icon-tag2{
+	background-image: url(img/icon_tag2_hover.png) ;
+}
+.tag-list-item:hover .icon-star{
+	background-position:left -122px;
+}
+.tag-list-item:hover .icon-calendar{
+	background-position:left -28px;
+}
+.tag-list-item:hover .icon-time{
+	background-position: left -209px;
+}
+.user-number{
+	font-size: 16px;
+	font-weight: bold;
+}
+
+.tag-list-item:hover .user-number,#parent_tag .user-number{
+	color: #18b0c3;
+}
+#parent_tag .user-number{
+	font-size: 18px;
+	line-height: 30px;
+}
+.view-tag-list {
+	padding: 10px;
+	background-color: #f6f6f6;
+}
+.view-tag-list .left-tag{
+	padding: 5px;
+	width: 140px;
+	min-height: 24px;
+	background-color: #fff;
+}
+.border-right{
+	border-right: 2px solid #cbcbcb;
+}
+.tag-info{
+	min-height: 100px;
+	margin-left: 155px;
+}
+.tag-title{
+	font-size: 16px;
+	color: #828282;
+}
+.tag-desc{
+	margin-bottom: 10px;
+	line-height: 24px;
+	color:#999;
+}
+.tag-top table{
+	width: 100%;
+	/*table-layout: fixed;*/
+	vertical-align: top;
+	line-height: 26px;
+}
+.tag-top table td{
+	padding-right: 5px;
+}
+.tag-top table .w150{
+	width: 150px;
+}
+.tag-top table .w100{
+	width: 100px;
+}
+.tag-top table .w200{
+	width: 200px;
+}
+.minw150{
+	min-width: 150px;
+}
+.tag-top table td{
+	min-width: 100px;
+}
+.show-tip-item .show-tip{
+	visibility: hidden;
+}
+.tag-list-item:hover  .show-tip-item .show-tip{
+	display: inline-block;
+	visibility: visible;
+}
+.tag-info .tag-list-item {
+	padding: 5px;
+}
+.tag-info .tag-list-item{
+	margin-bottom: 15px;
+	background-color: #fff;
+	border: 2px solid #fff;
+}
+
+.tag-info .tag-list-item:not(.no-data):hover{
+	/*border:2px solid #cbcbcb;*/
+}
+.tag-view-trend{	
+	min-height: 180px;
+}
+.trend-chart{
+	padding-top: 20px;
+}
+.icon-up-down{
+	position: relative;
+	top: 3px;
+}

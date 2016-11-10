@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+	<{include file='common/meta.html'}>
+	<{include file='common/pagebasecss.html'}>
+	<{assign var="current_page_title" value=''}>
+	<{foreach from=$menu item=item key=key}><{if $item['is_current']}><{$current_page_title=$item['module_name']}><{/if}><{/foreach}>
+	<title><{$current_page_title}></title>
+	<link rel="stylesheet" type="text/css" href="<{$base_url}>css/tag_manage/tag_common.css">
+	<link rel="stylesheet" type="text/css" href="<{$base_url}>css/tag_view/view_index.css">
+
+</head>
+	<body>
+		<{include file='common/header.html'}>
+		<div id="page_second_header" class='h44'>
+			<div class="top-operation">
+				<span class="radio" name="tag_effective" value="1">仅显示有效</span><span class="radio" name="tag_effective" value="0">全部标签</span>
+				<div class='floatr search-wrapper' id="high_seaarch_tag"><p><input class="search-input" placeholder="搜索标签"><a class="action-search"></a></p>
+
+					<div class='search-result'>
+						<ul>
+							
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class='main-wrapper'>
+			<div class='main-left'>
+				
+				<ul id="first_tag_wrapper" class="left-item tag-wrapper loading" template='tp_first_tag' child-target="second_tag_wrapper">
+
+				</ul>
+			</div>
+
+			<div class='main-right'>
+				<div class="pd10">
+					<div class='content-top'>
+						<h2><{$current_page_title}></h2> > <h3 id='current_first_tag' class="show-tip-item">--</h3>
+						<a id="export_tag_view" class='floatr export non' href="javascript:void(null)" target="_blank">导出</a>
+					</div>
+					<div class="main-content border-top">
+						<div>
+							<ul id="second_tag_wrapper" class='tag-list tag-wrapper' template='tp_second_tag' child-target="third_tag_wrapper">
+								
+								
+							</ul>
+							<div class='clear'></div>
+						</div>
+						<div >
+							<div id="third_tag_content"  class='view-tag-list'>
+								<div id='parent_tag' class="left-tag floatl">
+									
+								</div>
+								<div id="third_tag_wrapper" class='tag-info '>
+									
+								</div>
+								<div class="clear"></div>
+							</div>
+							
+							 <!-- 分页 -->
+	                    	<div class="table-operation non" id="paging"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+			</div>
+		</div>
+		<{include file='tag_manage/tag_template.html'}>
+		<script type="text/x-jsrender" id="tp_tag_parent">
+			<div id='parent_tag' class="left-tag floatl ">
+				<p class='icon-item icon-tag1 tag-title ell' title="{{:tag_name}}">{{:tag_name}}</p>
+				<p class='user-number tac'><span id="tag_rate">{{:rate||'--'}}</span>%</p>
+				<p class='tag-desc tac'>用户拥有该标签</p>
+				<p class='tag-desc '>描述：{{:tag_description}}</p>
+			</div>
+		</script>
+		<script type="text/x-jsrender" id='tp_third_tag'>
+			<div class="tag-list-item ">
+				<div class='tag-top'>
+					<table class="">
+						<tr>
+							<td>
+								<p class="icon-item icon-tag2  third-tag-detail show-tip-item show-tip-{{:tag_id}}" operate-id="{{:tag_id}}" >{{:tag_name}}<span class="show-tip non" target-selector=".show-tip-{{:tag_id}}"> </span></p>
+								
+							</td>
+							<td ><p class='minw150'><span class="user-number">{{numberFormat:population||0}}</span> 个用户</p></td>
+							<td class='w100'> <p class="icon-item icon-star">每{{:update_granularity}}更新</p></td>
+							<td class='w150'><p class="icon-item icon-calendar">更新跨度：{{:update_span}}个月</p></td>
+							<td class="w200"><p class='icon-item icon-time'>更新时间：{{:update_time||'--'}} <a class="to-view-trend icon-up-down icon-down" href="" operate-id="{{:tag_id}}" title="展开"> </a></p></td>
+
+
+						</tr>
+					</table>
+					{{packageTagData:tag_id #data}}
+				</div>
+				<div class='tag-view-trend non'>
+					<div id="chart_{{:tag_id}}" class="trend-chart">
+						
+					</div>
+				</div>
+			</div>
+		</script>
+		<script type="text/x-jsrender" id="tp_search_tag">
+			<div class="m10 view-tag-list">
+				{{packageParent:#data}}
+				<div class="tag-info">
+					{{packageChild:child}}
+				</div>
+				<div class="clear"></div>
+				
+			</div>
+		</script>
+		
+		<script type="text/javascript">
+			var noThirdHtml='<p class="tac tag-list-item no-data">暂无标签</p>';
+			var thirdTagUrl='<{$base_url}>ajax/tagView/tagViewAjax/getStatsTag'
+		</script>
+		<script src="<{$base_url}>js/common/libs/require.js" data-main="<{$base_url}>js/tag_view/view_index"></script>
+	</body>
+
+</html>

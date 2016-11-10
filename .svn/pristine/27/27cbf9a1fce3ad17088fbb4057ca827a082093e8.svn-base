@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<{include file='common/meta.html'}>
+	<{include file='common/pagebasecss.html'}>
+
+	<title>欢迎登录数据管理平台</title>
+	<style type="text/css">
+		.top-nav-main{
+			display:none;
+		}
+		.main-wrapper{
+			position: relative;
+			padding: 10px 0px;
+		}
+		.text-content{
+			position: absolute;
+			top: 40%;
+			left: 640px;
+			font-size: 30px;
+			color: #8d8d8d;
+		}
+		.fs49{
+			font-size: 49px;
+		}
+		.features{
+			margin: 15px 0px 40px;
+		}
+		.features span{
+			margin:0px 15px;
+
+		}
+		.text-content a,.c-blue{
+			color: #1db4c7;
+		}
+		.text-content a{
+			display: inline-block;
+			width: 219px;
+			height: 82px;
+			border:1px solid #b5b5b5;
+			border-radius: 4px;
+			
+			line-height: 82px;
+		}
+		.main-wrapper{
+			background: #fff;
+		}
+		.main-wrapper,.text-content a{
+			background: #F3FCFD;
+			background: -ms-linear-gradient(top, #fff,  #c5f4fc);        /* IE 10 */
+			background:-moz-linear-gradient(top,#fff,#c5f4fc);/*火狐*/ 
+			background:-webkit-gradient(linear, 0% 0%, 0% 100%,from(#fff), to(#c5f4fc));/*谷歌*/ 
+			background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#fff), to(#c5f4fc));      /* Safari 4-5, Chrome 1-9*/
+			background: -webkit-linear-gradient(top, #fff, #c5f4fc);   /*Safari5.1 Chrome 10+*/
+			background: -o-linear-gradient(top, #fff, #c5f4fc);  /*Opera 11.10+*/
+		}
+		.text-content a:hover{
+			background: #EAF9FB;
+			background: -ms-linear-gradient(top, #fff,  #C3E8EF);
+			background:-moz-linear-gradient(top,#fff,#C3E8EF);
+			background:-webkit-gradient(linear, 0% 0%, 0% 100%,from(#fff), to(#C3E8EF)); 
+			background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#fff), to(#C3E8EF));
+			background: -webkit-linear-gradient(top, #fff, #C3E8EF);
+			background: -o-linear-gradient(top, #fff, #C3E8EF);
+		}
+	</style>
+</head>
+	<body>
+		<{include file='common/header.html'}>
+
+		<div class='main-wrapper'>
+			<img src="<{$base_url}>img/bg_welcome.png">
+			<div class='inline text-content tac'>
+				<p class='fs49'>欢迎进入<span class='c-blue'>数据管理平台</span>！</p>
+				<p class='features'><span>可视化管理</span><span>多维度洞察</span></p>
+				<p ><a href="<{$base_url}><{$tag_manage}>">标签管理</a></p>
+			</div>
+		</div>
+		<{include file='common/footer.html'}>
+	</body>
+</html>

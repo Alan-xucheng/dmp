@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+	<{include file='common/meta.html'}>
+	<{include file='common/pagebasecss.html'}>
+	<{assign var="current_page_title" value=''}>
+	<{foreach from=$menu item=item key=key}><{if $item['is_current']}><{$current_page_title=$item['module_name']}><{/if}><{/foreach}>
+	
+	<title><{$current_page_title}></title>
+	<link rel="stylesheet" type="text/css" href="<{$base_url}>css/tag_manage/tag_common.css">
+</head>
+	<body id='page_tag_manage'>
+		<{include file='common/header.html'}>
+		<div id="page_second_header" class="h44">
+			<div class="top-operation">
+				<div class='floatr search-wrapper' id="high_seaarch_tag"><p><input class="search-input" placeholder="搜索标签"><a class="action-search"></a></p>
+
+					<div class='search-result'>
+						<ul>
+							
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class='main-wrapper'>
+			
+			<div class='main-left'>
+				<{if $add_auth}>
+					<div class="left-operation">
+						<a id="add_first_tag" class="btn-blue add-first"><span class="fs50">+</span><span class="add-first-text">一级分类</span></a>
+					</div>
+				<{/if}>
+				<ul id="first_tag_wrapper" class="left-item tag-wrapper loading" template='tp_first_tag' child-target="second_tag_wrapper">
+
+				</ul>
+			</div>
+
+			<div class='main-right'>
+				<div class='pd10'>
+					<div class='content-top'>
+						<h2><{$current_page_title}></h2> > <h3 id='current_first_tag' class="show-tip-item">--</h3>
+					</div>
+					<div class="main-content border-top">
+						<div>
+							<ul id="second_tag_wrapper" class='tag-list tag-wrapper' template='tp_second_tag' child-target="third_tag_wrapper">
+								<{if $add_auth}>
+									<li>
+										<a id="add_second_tag" class="btn-blue btn-add"><span class="icon-add"> </span><span class="">二级分类</span></a>
+									</li>
+								<{/if}>
+
+								
+							</ul>
+							<div class='clear'></div>
+						</div>
+						<div id="third_tag_content" class='mtb10' >
+							<table class="data-table">
+								<thead id="th_title">
+									<tr class="th-title">
+										<th>名称</th>
+										<th>ID</th>
+										<th>描述</th>
+										<th>更新粒度</th>
+										<th>更新跨度（月）</th>
+										<th>操作</th>
+									</tr>
+									<tr id='parent_tag' class='th-second-title'>
+										
+									</tr>
+								</thead>
+								<tbody id="third_tag_wrapper" class='tag-wrapper'>
+									
+								</tbody>
+							</table>
+							 <!-- 分页 -->
+	                    	<div class="table-operation non" id="paging"></div>
+						</div>
+						<p class='tac'><a id="add_third_tag" class="btn-blue btn-add"><span class="icon-add"> </span><span class="">新标签</span></a></p>
+					</div>
+				</div>
+			</div>
+				
+			
+		</div>
+		<{include file='tag_manage/tag_template.html'}>
+		<script type="text/x-jsrender" id='tp_third_tag'>
+			<tr class='tag-list-item'  operate-id="{{:tag_id}}" title="{{:tag_name}}">
+				<td>{{:tag_name}}</td>
+				<td>{{:tag_id}}</td>
+				<td class="tal">{{:tag_description}}</td>
+				<td>{{:update_granularity||'--'}}</td>
+				<td>{{:update_span||'--'}}</td>
+				
+				<td>
+					<{if $update_auth}><span class='mr5 edit'>  </span><{/if}>
+					<{if $delete_auth}><span class=' delete'>  </span><{/if}>
+				</td>
+				{{packageTagData:tag_id #data}}
+			</tr>
+		</script>
+		<script type="text/x-jsrender" id="tp_search_tag">
+			<div class="m10">
+				<table class="data-table">
+					<thead id="th_title">
+						<tr class="th-title">
+							<th>名称</th>
+							<th>ID</th>
+							<th>描述</th>
+							<th>更新粒度</th>
+							<th>更新跨度（月）</th>
+						</tr>
+						<tr id='parent_tag' class='th-second-title'>
+							{{packageTr:#data true}}
+						</tr>
+					</thead>
+					<tbody id="third_tag_wrapper" class='tag-wrapper'>
+						{{packageTr:child}}
+					</tbody>
+				</table>
+				
+			</div>
+		</script>
+		<script type="text/x-jsrender" id="tp_search_item">
+			<tr class='tag-list-item {{if parent_flag}}th-second-title{{/if}}'  operate-id="{{:tag_id}}" title="{{:tag_name}}">
+				<td>{{:tag_name}}</td>
+				<td>{{:tag_id}}</td>
+				<td class='tal'>{{:tag_description}}</td>
+				<td>{{:update_granularity||'--'}}</td>
+				<td>{{:update_span||'--'}}</td>
+			</tr>
+		</script>
+		<!-- 分类 -->
+		<script type="text/x-jsrender" id='tp_tag_type'>
+			<div id="tag_operate_wrapper">
+				{{if tag_id}}
+					<input name="tag_id" type="hidden" value="{{:tag_id}}">
+					<div class="field-value-list">
+				  		  <p class="field-value-list-left"><span class="field-value">标签ID</p>
+			              <div class="field-value-list-right">
+			                    <p class="field-value">{{:tag_id}}</p>
+			              </div>
+		            </div>
+				{{/if}}
+				{{if parent_id}}
+					<input name="parent_id" type="hidden" value="{{:parent_id}}">
+				{{/if}}
+		  		{{if parent_id&&parent_name}}
+		  			<div class="field-value-list">
+			  			<p class="field-value-list-left"><span class="field-value">上级分类</p>
+			  			<div class="field-value-list-right"><p class='field-value'>{{:parent_name}}（ID：{{:parent_id}}）</p></div>
+			  		</div>
+		  		{{/if}}
+			  	<div class="field-value-list">
+			  		  <p class="field-value-list-left"><span class="field-value"><i class="asterisk">*</i>分类名称</p>
+		              <div class="field-value-list-right">
+		                    <p class="field-value">
+		                        <input id="tag_name" name="tag_name" class="info-input checklength " tabindex="1" type="text" value='{{:tag_name||""}}' placeholder="请填写详细的分类名称">
+		                    </p>
+		              </div>
+	            </div>
+	            <div class="field-value-list">
+			  		  <p class="field-value-list-left"><span class="field-value"><i class="asterisk">*</i>分类描述</p>
+		              <div class="field-value-list-right">
+		                    <p class="field-value">
+	                  			<textarea id="tag_desc" class='checklength' name="tag_desc" placeholder="请简述分类含义和生成策略">{{:tag_description||''}}</textarea>
+		                    </p>
+		              </div>
+	            </div>
+			</div>
+		</script>
+		<!-- 标签 -->
+		<script type="text/x-jsrender" id='tp_tag'>
+			<div id="tag_operate_wrapper">
+
+				{{if tag_id}}
+					<input name="tag_id" type="hidden" value="{{:tag_id}}">
+					<div class="field-value-list">
+				  		  <p class="field-value-list-left"><span class="field-value">标签ID</p>
+			              <div class="field-value-list-right">
+			                    <p class="field-value">{{:tag_id}}</p>
+			              </div>
+		            </div>
+				{{/if}}
+				{{if parent_id}}
+					<input name="parent_id" type="hidden" value="{{:parent_id}}">
+				{{/if}}
+		  		{{if parent_id&&parent_name}}
+		  			<div class="field-value-list">
+			  			<p class="field-value-list-left"><span class="field-value">分类名称</p>
+			  			<div class="field-value-list-right"><p class='field-value'>{{:parent_name}}（ID：{{:parent_id}}）</p></div>
+			  		</div>
+		  		{{/if}}
+			  	<div class="field-value-list">
+			  		  <p class="field-value-list-left"><span class="field-value"><i class="asterisk">*</i>标签名称</p>
+		              <div class="field-value-list-right">
+		                    <p class="field-value">
+		                        <input id="tag_name" name="tag_name" class="info-input checklength " tabindex="1" type="text" value='{{:tag_name||""}}' placeholder="请填写详细的标签名称" >
+		                    </p>
+		              </div>
+	            </div>
+	            <div class="field-value-list">
+			  		  <p class="field-value-list-left"><span class="field-value"><i class="asterisk">*</i>标签描述</p>
+		              <div class="field-value-list-right">
+		                    <p class="field-value">
+	                  			<textarea id="tag_desc" class="checklength" name="tag_desc" placeholder="请简述标签含义和生成策略">{{:tag_description||''}}</textarea>
+		                    </p>
+		              </div>
+	            </div>
+	           
+		  		 <div class="field-value-list">
+			  		  <p class="field-value-list-left"><span class="field-value"><i class="asterisk">*</i>更新粒度</p>
+		              <div class="field-value-list-right">
+		                    <p class="field-value">
+	                  			<select id="update_granularity" class="not-null" name="update_granularity">
+	                  			{{setSelect:update_granularity||''}}
+	                  				
+	                  			</select>
+		                    </p>
+		              </div>
+	            </div>
+	             <div class="field-value-list">
+			  		  <p class="field-value-list-left"><span class="field-value"><i class="asterisk">*</i>更新跨度</p>
+		              <div class="field-value-list-right">
+		                    <p class="field-value">
+	                  			<input id="update_span" name="update_span" maxlength="5" class="info-input regex" value="{{:update_span||''}}" placeholder="单位：月">
+		                    </p>
+		              </div>
+	            </div>
+			</div>
+		</script>
+		<script type="text/x-jsrender" id="tp_delete">
+			<div id='tag_operate_wrapper'>
+				<input id="tag_id" name="tag_id" type="hidden" value="{{:tag_id}}">
+				<p>确认删除<span class="fwb mrl10">{{:tag_name}}（ID：{{:tag_id}}）</span>数据？</p>
+			</div>
+		</script>
+
+		<script type="text/javascript">
+			var updateGranularity=<{json_encode($update_granularity)}>||{};
+			var noThirdHtml='<tr class="tag-list-item"><td colspan="6">暂无标签</td></tr>';
+		</script>
+		<script src="<{$base_url}>js/common/libs/require.js" data-main="<{$base_url}>js/tag_manage/tag_manage"></script>
+	</body>
+
+</html>

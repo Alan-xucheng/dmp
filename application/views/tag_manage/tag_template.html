@@ -1,0 +1,23 @@
+	<script type="text/x-jsrender" id="tp_first_tag">
+		<li class="tag-list-item" operate-id="{{:tag_id}}" title="{{:tag_name}}">
+			<p class="ell tag-item" >
+				<span>{{:tag_name}}</span>
+			</p>
+				<{if $update_auth}><span class='floatr ml5 edit'>  </span><{/if}>
+				<{if $delete_auth}><span class='floatr ml5 delete'>  </span><{/if}>
+		</li>
+		{{packageTagData:tag_id #data}}
+	</script>
+	<script type="text/x-jsrender" id="tp_second_tag">
+		<li class='tag-list-item' title="{{:tag_name}}"  operate-id="{{:tag_id}}">
+			<a class="btn-blue tag-item ell"><span class="">{{:tag_name}}</span></a>
+		</li>
+		{{packageTagData:tag_id #data}}
+	</script>
+	<script type="text/x-jsrender" id="tp_tag_type_detail">
+		<dl>
+			<dt>{{:tag_name}}</dt>
+			<dd>ID：{{:tag_id}}</dd>
+			<dd>描述：{{:tag_description}}</dd>
+		</dl>
+	</script>

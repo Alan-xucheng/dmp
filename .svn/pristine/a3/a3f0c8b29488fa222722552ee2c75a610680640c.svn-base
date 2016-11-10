@@ -1,0 +1,260 @@
+@charset "utf-8";
+
+/*================= 弹出层样式=================
+ * artDialog ,新建弹出层样式
+ * author:zysun
+ * createDate:2015-11-19
+ * createContent:
+ ==============================================*/
+
+ /* common start */
+
+.aui_outer {
+	text-align: left;
+}
+table.aui_border, table.aui_dialog {
+	border: 0;
+	margin: 0;
+	border-collapse: collapse;
+	width: auto;
+}
+table.aui_dialog{
+	width: 100%;
+}
+.aui_nw, .aui_n, .aui_ne, .aui_w, .aui_c, .aui_e, .aui_sw, .aui_s, .aui_se, .aui_header, .aui_tdIcon, .aui_main, .aui_footer {
+	padding: 0;
+}
+.aui_header, .aui_buttons button {
+	
+}
+.aui_title {
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+.aui_state_noTitle .aui_title {
+	display: none;
+}
+.aui_close {
+	display: block;
+	position: absolute;
+	background: url(img/icon_dialog.png) no-repeat 1px center;
+	text-indent: -9999px;
+	text-decoration: none;
+	outline: none;
+	cursor: pointer;
+}
+.aui_close:hover {
+	background-position: -30px  center;
+	text-decoration: none;
+}
+
+.aui_main {
+	overflow: auto;
+	min-width: 9em;
+	min-width: 0\9/*IE8 BUG*/;
+	max-width: 722px;
+	text-align: center;
+}
+.aui_content {
+	display: inline-block;
+	overflow-y:auto; 
+	padding: 15px 20px;
+	max-height: 400px;
+	min-width: 200px;
+	font-size: 14px;
+	text-align: center;
+	border: none 0;
+}
+.aui_content.aui_state_full {
+	display: block;
+	width: 100%;
+	margin: 0;
+	padding: 0!important;
+	height: 100%;
+}
+.aui_loading {
+	width: 96px;
+	height: 32px;
+	text-align: left;
+	text-indent: -999em;
+	overflow: hidden;
+	background: url(../../img/common/loading.gif) no-repeat center center;
+}
+.aui_icon {
+	vertical-align: middle;
+}
+.aui_icon div {
+	width: 48px;
+	height: 48px;
+	margin: 10px 0 10px 10px;
+	background-position: center center;
+	background-repeat: no-repeat;
+}
+.aui_buttons {
+	padding-bottom: 30px;
+	text-align: right;
+	white-space: nowrap;
+}
+.aui_buttons button {
+	margin-left: 15px;
+	margin-right:15px;
+	padding: 0px 10px;
+	height:30px;
+	min-width: 60px;
+	line-height: 30px;
+	cursor: pointer;
+	display: inline-block;
+	text-align: center;
+	line-height: 28px;
+	letter-spacing: 2px;
+	width: auto;
+	overflow: visible;
+	color: #565c60;
+	border: solid 1px #aeaeae;
+	background: #fff;
+}
+.aui_buttons button:hover{
+	background-color: #f3f3f3;
+}
+.aui_buttons button::-moz-focus-inner {
+	border: 0;
+	padding: 0;
+	margin: 0;
+}
+.aui_buttons button:focus {
+	outline: none 0;
+}
+.aui_buttons button:hover {
+	background-position: 0 -66px;
+}
+
+.aui_buttons button[disabled] {
+	cursor: default;
+	color: #666;
+	background: #DDD;
+	filter: alpha(opacity=50);
+	opacity: .5;
+	box-shadow: none;
+}
+button.aui_state_highlight {
+	color: #FFF;
+	background: #21b5c6;
+}
+button.aui_state_highlight:hover {
+	color: #FFF;
+	background-color: #1394A2;
+	background-position: 0 -22px;
+}
+
+/* common end */
+
+.aui_inner {
+	background: #FFF;
+}
+.aui_outer, .aui_inner {
+	border: none;
+}
+.aui_border {
+	box-shadow: inset 0 0 1px rgba(255, 255, 255, .9);
+}
+.aui_nw, .aui_ne, .aui_sw, .aui_se {
+	width: 0px;
+	height: 0px;
+	font-size: 0.001em;
+}
+
+.aui_state_drag .aui_outer, .aui_outer:active {
+	box-shadow: none;
+}
+.aui_titleBar {
+	position: relative;
+	height: 100%;
+}
+.aui_title {
+	height: 40px;
+	line-height:40px;
+	padding: 0 28px 0 10px;
+	font-weight: bold;
+	font-size: 14px;
+	color: #666;
+	background-color: #2eb7cb;
+	text-align: left;
+}
+.aui_state_focus .aui_title {
+	color: #fff;
+}
+.aui_state_drag .aui_title {
+	/*background: #e1f1ff;*/
+	box-shadow: none;
+}
+.aui_state_drag .aui_titleBar {
+	box-shadow: none;
+}
+.aui_close {
+	padding: 0;
+	margin: 3px;
+	top: 9px;
+	right: 8px;
+	width: 16px;
+	height: 16px;
+	line-height: 16px;
+	font-size: 14px;
+	color: #68767b;
+	text-align: center;
+	text-shadow: 0 1px 0 rgba(255, 255, 255, .9);
+}
+.aui_close:active {
+	box-shadow: none;
+}
+.aui_content {
+	color: #666;
+}
+.aui_state_focus .aui_content {
+	color: #666;
+}
+.aui_buttons {
+	text-align:center;
+	/*background-color: #F6F6F6;
+	border-top: solid 1px #DADEE5;*/
+}
+.aui_state_noTitle .aui_nw, .aui_state_noTitle .aui_ne, .aui_state_noTitle .aui_sw, .aui_state_noTitle .aui_se {
+	width: 3px;
+	height: 3px;
+}
+.aui_state_noTitle .aui_inner {
+	border: 1px solid #666;
+	background: #FFF;
+}
+.aui_state_noTitle .aui_outer {
+	border: none 0;
+	box-shadow: none;
+}
+.aui_state_noTitle .aui_nw, .aui_state_noTitle .aui_n, .aui_state_noTitle .aui_ne, .aui_state_noTitle .aui_w, .aui_state_noTitle .aui_e, .aui_state_noTitle .aui_sw, .aui_state_noTitle .aui_s, .aui_state_noTitle .aui_se {
+	background: rgba(0, 0, 0, .05);
+}
+.aui_state_noTitle .aui_titleBar {
+	bottom: 0;
+	_bottom: 0;
+	_margin-top: 0;
+}
+.aui_state_noTitle .aui_close {
+	top: 0;
+	right: 0;
+	width: 18px;
+	height: 18px;
+	line-height: 18px;
+	text-align: center;
+	text-indent: 0;
+	font-size: 18px;
+	text-decoration: none;
+	color: #214FA3;
+	background: none;
+	filter:!important;
+}
+.aui_state_noTitle .aui_close:hover, .aui_state_noTitle .aui_close:active {
+	text-decoration: none;
+	color: #900;
+}
+.aui_state_noTitle .aui_dialog {
+	box-shadow: none;
+}

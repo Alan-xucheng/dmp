@@ -1,0 +1,30 @@
+<div id="page_header" class='header'>
+	<div class="header-top">
+			<a class="logo" href="<{$base_url}>">
+				<span><img src="<{$base_url}>img/logo.png"></span>
+			</a>
+			<ul class="top-nav-main">
+				<{foreach from=$menu item=item key=key}>
+						<{if $item['full_path']}>
+							<li <{if $item['is_current']}>class="current" <{/if}>>
+									<a href="<{$base_url}><{$item['full_path']}>"><{$item['module_name']}></a>
+							</li>
+						<{else}>
+							
+						<{/if}>
+				<{foreachelse}>
+				<{/foreach}>
+			</ul>
+			<div class="login-info ">
+				<span class="login-info-item  huanying">欢迎：</span>
+				<span
+					class="login-info-item username">
+					<a id="username-a" href="javascript:void(null)"><{$account_info['login_account']}></a>，
+				</span>
+				<a class='logout' href="<{$base_url}><{$logout}>">
+					<span class="login-info-item tuichu">退出</span>
+				</a>
+			</div>
+
+	</div>
+</div>
